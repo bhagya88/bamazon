@@ -1,0 +1,29 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "Amazon like shopping app with node.js, mysql, and inquirer.",
+  "main": "BamazonCustomer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhagya88/bamazon.git"
+  },
+  "keywords": [
+    "node.js",
+    "mysql",
+    "shopping",
+    "app"
+  ],
+  "author": "Bhagya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bhagya88/bamazon/issues"
+  },
+  "homepage": "https://github.com/bhagya88/bamazon#readme",
+  "dependencies": {
+    "inquirer": "^1.2.2",
+    "mysql": "^2.11.1"
+  }
+}
