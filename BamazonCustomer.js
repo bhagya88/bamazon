@@ -15,3 +15,9 @@ connection.connect(function(err){
 
 });
 
+connection.query('SELECT * FROM PRODUCTS',function(err,results){
+	results.forEach(function(row){
+		console.log(row.itemID+' | '+row.productName+' | '+row.departmentName+' | '+row.price+' | '+row.stockQuantity);
+	});
+
+});
