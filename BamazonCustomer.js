@@ -1,13 +1,3 @@
-// var mysql = require('mysql');
-// var inquirer = require('inquirer');
-
-// var connection = mysql.createConnection({
-// 	host:'localhost',
-// 	port:'3306',
-// 	user:'root',
-// 	password:'vidya999',
-// 	database: 'bamazon'
-// });
 var inquirer = require('inquirer');
 var connection = require('./connection.js');
 
@@ -49,7 +39,7 @@ function processOrder(productID,quantity){
 		console.log('new quantity',quantityRemaining);
 			
 
-			connection.query('UPDATE products SET ? WHERE ?',[{stockQuantity:quantityRemaining},{itemID:productID}],function(err){
+			connection.query('UPDATE products,departments SET products.stockQuantity = ? , departments.totalSales = ? WHERE products.itemID = ? AND products.departmentName = departments.departmentName',[quantityRemaining, price*quantity,productID],function(err){
 				if(err) throw err;
 				console.log('updated products table');
 				console.log('The total cost of purchase is $', price*quantity);
