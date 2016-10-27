@@ -1,5 +1,6 @@
 var inquirer = require('inquirer');
 var connection = require('./connection.js');
+require('console.table');
 
 connection.connect(function(err){
 	if(err) throw err;
@@ -36,10 +37,7 @@ function getOption(){
 
 function viewProducts(){
 	connection.query('SELECT * FROM PRODUCTS',function(err,results){
-		results.forEach(function(row){
-			console.log(row.itemID+' | '+row.productName+' | '+row.departmentName+' | '+row.price+' | '+row.stockQuantity);
-
-		});
+		console.table(results);
 		connection.end();
 	});
 
@@ -47,10 +45,7 @@ function viewProducts(){
 
 function viewLowInventory(){
 	connection.query('SELECT * FROM PRODUCTS WHERE stockQuantity < ?',50,function(err,results){
-	results.forEach(function(row){
-		console.log(row.itemID+' | '+row.productName+' | '+row.departmentName+' | '+row.price+' | '+row.stockQuantity);
-		
-	});
+	console.table(results);
 	connection.end();
 });
 
@@ -58,7 +53,7 @@ function viewLowInventory(){
 }
 
 function addToInventory(){
-	inquirer.prompt([{name:"productID",message:"Enter the id of the product?"},{name:"quantity",message:"Enter quantity: "}])
+	inquirer.prompt([{name:"productID",message:"Enter the id of the product?",validate: naturalNumber},{name:"quantity",message:"Enter quantity: ", validate: naturalNumber}])
 		.then(function(answer){
 		console.log(answer);
 		
@@ -74,9 +69,14 @@ function addToInventory(){
 
 function addNewProduct(){
 		inquirer.prompt([{name:"product",message:"Enter product name: "},
-						{name:"quantity",message:"Enter quantity: "},
+						{name:"quantity",message:"Enter quantity: ",validate: naturalNumber},
 						{name:"dept",message:"Enter department name: "},
-						{name:"price",message:"Enter price: "}])
+						{name:"price",message:"Enter price: ",validate: function(value){
+							if(parseFloat(value)>=0){
+								return true;
+							}
+						}
+					}])
 		.then(function(answer){
 		console.log(answer);
 				connection.query('INSERT INTO products SET ?',{productName: answer.product, stockQuantity: answer.quantity, departmentName: answer.dept, price: answer.price},function(err,results){
@@ -88,4 +88,10 @@ function addNewProduct(){
 
 	});
 
+}
+
+function naturalNumber(value){
+	if(parseInt(value)>0){
+		return true;
+	}
 }

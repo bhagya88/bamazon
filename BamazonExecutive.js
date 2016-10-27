@@ -1,5 +1,6 @@
 var inquirer = require('inquirer');
 var connection = require('./connection.js');
+require('console.table');
 
 connection.connect(function(err){
 	if(err) throw err;
@@ -28,7 +29,7 @@ function getOption(){
 
 function viewProductSales(){
 	connection.query('SELECT departmentID,departmentName,overHeadCosts,totalSales,totalSales - OverHeadCosts as totalProfit FROM departments',function(err,results){
-		console.log(results);
+		console.table(results);
 		connection.end();
 
 	});
@@ -37,9 +38,14 @@ function viewProductSales(){
 
 function createNewDept(){
 	inquirer.prompt([{name:"dept",message:"Enter Department name: "},
-						{name:"costs",message:"Enter OverHeadCosts: "}])
+					{name:"costs",message:"Enter OverHeadCosts: ",validate: function(value){
+							if(parseFloat(value)>=0){
+								return true;
+							}
+						}
+					}])
 		.then(function(answer){
-		console.log(answer);
+	
 				connection.query('INSERT INTO departments SET ?',{departmentName: answer.dept, OverHeadCosts: answer.costs},function(err,results){
 				if(err) throw err;
 				console.log('Added dept in the table.'); 
