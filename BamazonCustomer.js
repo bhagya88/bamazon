@@ -35,7 +35,8 @@ function processOrder(productID,quantity){
 		price = parseInt(results[0].price);
 				//check enough stock is available to place order
 		if(availableQuantity < quantity){
-			console.log("Insufficient quantity!")
+			console.log("Insufficient quantity!");
+			connection.end();
 		}else{
 
 		var quantityRemaining = availableQuantity - quantity;
