@@ -27,8 +27,9 @@ function getOption(){
 
 
 function viewProductSales(){
-	connection.query('SELECT * FROM departments',function(err,results){
+	connection.query('SELECT departmentID,departmentName,overHeadCosts,totalSales,totalSales - OverHeadCosts as totalProfit FROM departments',function(err,results){
 		console.log(results);
+		connection.end();
 
 	});
 
@@ -42,8 +43,11 @@ function createNewDept(){
 				connection.query('INSERT INTO departments SET ?',{departmentName: answer.dept, OverHeadCosts: answer.costs},function(err,results){
 				if(err) throw err;
 				console.log('Added dept in the table.'); 
+				connection.end();
 				
 			});
 
 	});
+
+}
 

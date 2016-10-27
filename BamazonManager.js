@@ -27,6 +27,7 @@ function getOption(){
 					addNewProduct();
 					break;
 			}
+
 		});
 		
 	
@@ -37,8 +38,9 @@ function viewProducts(){
 	connection.query('SELECT * FROM PRODUCTS',function(err,results){
 		results.forEach(function(row){
 			console.log(row.itemID+' | '+row.productName+' | '+row.departmentName+' | '+row.price+' | '+row.stockQuantity);
+
 		});
-		
+		connection.end();
 	});
 
 }
@@ -47,8 +49,9 @@ function viewLowInventory(){
 	connection.query('SELECT * FROM PRODUCTS WHERE stockQuantity < ?',50,function(err,results){
 	results.forEach(function(row){
 		console.log(row.itemID+' | '+row.productName+' | '+row.departmentName+' | '+row.price+' | '+row.stockQuantity);
+		
 	});
-
+	connection.end();
 });
 
 
@@ -62,8 +65,9 @@ function addToInventory(){
 		connection.query('UPDATE products SET stockQuantity = stockQuantity + ?  WHERE ?',[parseInt(answer.quantity),{itemID:answer.productID}],function(err,results){
 				if(err) throw err;
 				console.log('Updated products table');
-				
+				connection.end();
 			});
+	
 
 	});
 }
@@ -78,8 +82,9 @@ function addNewProduct(){
 				connection.query('INSERT INTO products SET ?',{productName: answer.product, stockQuantity: answer.quantity, departmentName: answer.dept, price: answer.price},function(err,results){
 				if(err) throw err;
 				console.log('Added product in table.'); 
-				
+				connection.end();	
 			});
+
 
 	});
 

@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/bhagya88/bamazon#readme",
   "dependencies": {
+    "console.table": "^0.7.0",
     "inquirer": "^1.2.2",
     "mysql": "^2.11.1"
   }

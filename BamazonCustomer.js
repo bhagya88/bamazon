@@ -1,6 +1,9 @@
 var inquirer = require('inquirer');
 var connection = require('./connection.js');
 
+require('console.table');
+
+
 connection.connect(function(err){
 	if(err) throw err;
 	console.log("Connected to database. Connection id :",connection.threadId);
@@ -8,9 +11,10 @@ connection.connect(function(err){
 });
 
 connection.query('SELECT * FROM PRODUCTS',function(err,results){
-	results.forEach(function(row){
-		console.log(row.itemID+' | '+row.productName+' | '+row.departmentName+' | '+row.price+' | '+row.stockQuantity);
-	});
+	// results.forEach(function(row){
+	// 	console.log(row.itemID+' | '+row.productName+' | '+row.departmentName+' | '+row.price+' | '+row.stockQuantity);
+	// });
+	console.table(results);
 	getOrder();
 });
 
@@ -19,6 +23,7 @@ function getOrder(){
 		.then(function(answer){
 		console.log(answer);
 		processOrder(answer.productID,parseInt(answer.quantity));
+		connection.end();
 	});
 
 }
