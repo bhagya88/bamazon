@@ -11,8 +11,9 @@ The app will take in orders from customers and depletes stock from the store's i
 
 The demo of how this app works is provided here, [click to find demo on github](https://github.com/bhagya88/bamazon/blob/master/BamazonDemo.mp4)
 
-### How it works:
-	It has 3 views
+### How it works
+
+The app has  3 views 
 
 #### 1. Customer view - BamazonCustomer.js
 
