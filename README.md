@@ -3,7 +3,7 @@ Amazon like storefront where customers can purchase products. This app is bulit 
 
 ### Overview
 
-The app will take in orders from customers and depletes stock from the store's inventory. It also trackx product sales across your store's departments and then provide a summary of the highest-grossing departments in the store. 
+The app will take in orders from customers and depletes stock from the store's inventory. It also tracks product sales across your store's departments and then provide a summary of the highest-grossing departments in the store. 
 
 
 
