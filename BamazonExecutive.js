@@ -1,4 +1,4 @@
-// inquirer is used to get user inputs from console
+// inquirer is used to getc user inputs from console
 // console.table takes an array of objects  and prints it in table form
 // connection gives a connection object to the mysql database
 var inquirer = require('inquirer');
@@ -35,7 +35,7 @@ function getOption(){
 
 // shows department table contents and totalProfit (TotalSales- OverHeadCosts) for each dept. 
 function viewProductSales(){ 
-	connection.query('SELECT departmentID,departmentName,overHeadCosts,totalSales,totalSales - OverHeadCosts as totalProfit FROM departments',function(err,results){
+	connection.query('SELECT departmentID,departmentName,overHeadCosts,totalSales,totalSales - OverHeadCosts as totalProfit FROM departments order by totalSales desc',function(err,results){
 		console.table(results);
 		connection.end();
 
