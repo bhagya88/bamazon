@@ -3,7 +3,7 @@ Amazon like storefront where customers can purchase products. This app is bulit 
 
 ### Overview
 
-The app will take in orders from customers and deplete stock from the store's inventory. It also trackx product sales across your store's departments and then provide a summary of the highest-grossing departments in the store. 
+The app will take in orders from customers and depletes stock from the store's inventory. It also trackx product sales across your store's departments and then provide a summary of the highest-grossing departments in the store. 
 
 
 
@@ -11,9 +11,10 @@ The app will take in orders from customers and deplete stock from the store's in
 
 The demo of how this app works is provided here, [click to find demo on github](https://github.com/bhagya88/bamazon/blob/master/BamazonDemo.mp4)
 
-#### How it works:
+### How it works:
+	It has 3 views
 
-### Customer view - BamazonCustomer.js
+#### 1. Customer view - BamazonCustomer.js
 
 
  * Running this  will file will display all of the items available for sale. Include the ids, names, and prices of products for sale.
@@ -31,7 +32,7 @@ The demo of how this app works is provided here, [click to find demo on github](
 
 
 
-### Manager View - BamazonManager.js
+#### 2. Manager View - BamazonManager.js
 
 * Running this application will:
 
@@ -51,22 +52,17 @@ The demo of how this app works is provided here, [click to find demo on github](
 
 
 
-### Executive View - BamazonExecutive.js
+#### 3. Executive View - BamazonExecutive.js
 
 
 * Running this application will list a set of menu options: 
 	* View Product Sales by Department 
 	* Create New Department
 
-* When an executive selects `View Product Sales by Department`, the app displays a summarized table in their terminal/bash window. Use the table below as a guide. 
-
-	 departmentID  departmentName  overHeadCosts   totalSales    totalProfit  
-	-------------- --------------- --------------- ------------- --------------
-	 01             Electronics     10000          20000         10000       
-	 02             Produce         60000          100000        40000       
+* When an executive selects `View Product Sales by Department`, the app displays a summarized table in their terminal/bash window. 
 
 
-* The `totalProfit` is calculated on the fly using the difference between `overheadCosts` and `totalSales`. `TotalProfit` should is not stored in the database. totalProfit is a custom alias for (totalSales-overHeadCosts). 
+* The `totalProfit` is calculated on the fly using the difference between `overheadCosts` and `totalSales`. `totalProfit` is not stored in the database. totalProfit is a custom alias for (totalSales-overHeadCosts). 
 
 
 #### Developed by Bhagya
