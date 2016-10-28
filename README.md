@@ -18,7 +18,7 @@ The app has  3 views. `Customer View`, `Manager view` and `Executive view`.
 #### 1. Customer view - BamazonCustomer.js
 
 
- * Running this  will file will display all of the items available for sale. Include the ids, names, and prices of products for sale.
+ * Running this application will display all of the items available for sale. Include the ids, names, and prices of products for sale.
 
  * Then app prompts users with two messages. 
 	* The first asks them the ID of the product they would like to buy. 
