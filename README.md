@@ -1,4 +1,5 @@
-#Bmazon - Amazon like storefront where customers can purchase products bulit using Node Js, MySQL, Inquirer module, and console.table module. 
+#Bmazon 
+Amazon like storefront where customers can purchase products bulit using Node Js, MySQL, Inquirer module, and console.table module. 
 
 ### Overview
 
@@ -8,7 +9,7 @@ The app will take in orders from customers and deplete stock from the store's in
 
 ### Demo
 
-The demo of how this app works is proived here, [click to find demo on github](https://github.com/bhagya88/bamazon/blob/master/BamazonDemo.mp4)
+The demo of how this app works is provided here, [click to find demo on github](https://github.com/bhagya88/bamazon/blob/master/BamazonDemo.mp4)
 
 #### Instructions:
 
@@ -68,4 +69,4 @@ The demo of how this app works is proived here, [click to find demo on github](h
 * The `totalProfit` is calculated on the fly using the difference between `overheadCosts` and `totalSales`. `TotalProfit` should is not stored in the database. totalProfit is a custom alias for (totalSales-overHeadCosts). 
 
 
-## Developed by Bhagya
+#### Developed by Bhagya
