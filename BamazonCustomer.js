@@ -1,3 +1,6 @@
+// inquirer is used to get user inputs from console
+// console.table takes an array of objects  and prints it in table form
+// connection gives a connection object to the mysql database
 var inquirer = require('inquirer');
 var connection = require('./connection.js');
 require('console.table');
@@ -9,6 +12,7 @@ connection.connect(function(err){
 
 });
 
+//shows contents of the products table
 connection.query('SELECT * FROM PRODUCTS',function(err,results){
 	console.log("");
 
@@ -16,6 +20,8 @@ connection.query('SELECT * FROM PRODUCTS',function(err,results){
 	getOrder();
 });
 
+
+// gets the information of a product from user
 function getOrder(){
 	inquirer.prompt([{name:"productID",message:"Enter the itemID of the product you want to purchase: ", validate: naturalNumber},{name:"quantity",message:"Enter quantity: ",validate: naturalNumber}])
 		.then(function(answer){
@@ -26,6 +32,8 @@ function getOrder(){
 
 }
 
+
+// processes order. Gives purchase cost. Also adds to totalSales in departments table for that department.
 function processOrder(productID,quantity){
 	//new available quantity after customer order
 	var availableQuantity,price;
@@ -33,17 +41,17 @@ function processOrder(productID,quantity){
 		if(err) throw err;
 		availableQuantity = results[0].stockQuantity;
 		price = parseInt(results[0].price);
-				//check enough stock is available to place order
+
+		//check enough stock is available to place order
 		if(availableQuantity < quantity){
 			console.log("Insufficient quantity!");
 			connection.end();
 		}else{
 
 		var quantityRemaining = availableQuantity - quantity;
-		
-			
 
-			connection.query('UPDATE products,departments SET products.stockQuantity = ? , departments.totalSales = departments.totalSales + ? WHERE products.itemID = ? AND products.departmentName = departments.departmentName',[quantityRemaining, price*quantity,productID],function(err){
+		// updates products table(stockQuantity column) and departments table(total Sales column)
+				connection.query('UPDATE products,departments SET products.stockQuantity = ? , departments.totalSales = departments.totalSales + ? WHERE products.itemID = ? AND products.departmentName = departments.departmentName',[quantityRemaining, price*quantity,productID],function(err){
 				if(err) throw err;
 			
 				console.log('The total cost of purchase is $', price*quantity);
@@ -52,10 +60,10 @@ function processOrder(productID,quantity){
 		}
 
 	});
-
-
 }
 
+
+// checks if value is natural number
 function naturalNumber(value){
 	if(parseInt(value)>0){
 		return true;
