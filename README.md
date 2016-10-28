@@ -3,7 +3,7 @@ Amazon like storefront where customers can purchase products. This app is bulit 
 
 ### Overview
 
-The app will take in orders from customers and depletes stock from the store's inventory. It also tracks product sales across your store's departments and then provide a summary of the highest-grossing departments in the store. 
+The app will take in orders from customers and depletes stock from the store's inventory. It also tracks product sales across your store's departments and then provides a summary of the highest-grossing departments in the store. 
 
 
 
@@ -13,7 +13,7 @@ The demo of how this app works is provided here, [click to find demo on github](
 
 ### How it works
 
-The app has  3 views 
+The app has  3 views. `Customer View`, `Manager view` and `Executive view`. 
 
 #### 1. Customer view - BamazonCustomer.js
 
