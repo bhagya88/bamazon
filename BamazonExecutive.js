@@ -9,7 +9,7 @@ require('console.table');
 // connect to the database
 connection.connect(function(err){
 	if(err) throw err;
-	console.log("Connected to database. Connection id :",connection.threadId);
+	//console.log("Connected to database. Connection id :",connection.threadId);
 
 	//gets user inputs
 	getOption();
@@ -20,7 +20,7 @@ connection.connect(function(err){
 function getOption(){
 	inquirer.prompt([{name:"action",message:"Choose an option.",type: "list",choices :["View Product Sales by Department","Create New Department"]}])
 		.then(function(answer){
-		console.log(answer);
+		
 
 			switch(answer.action){
 				case 'View Product Sales by Department':
@@ -35,7 +35,8 @@ function getOption(){
 
 // shows department table contents and totalProfit (TotalSales- OverHeadCosts) for each dept. 
 function viewProductSales(){ 
-	connection.query('SELECT departmentID,departmentName,overHeadCosts,totalSales,totalSales - OverHeadCosts as totalProfit FROM departments order by totalSales desc',function(err,results){
+	connection.query('SELECT DepartmentID,DepartmentName,OverHeadCosts,TotalSales,totalSales - OverHeadCosts as TotalProfit FROM departments order by totalSales desc',function(err,results){
+		console.log('');
 		console.table(results);
 		connection.end();
 
@@ -56,9 +57,11 @@ function createNewDept(){
 					}])
 		.then(function(answer){
 	
-				connection.query('INSERT INTO departments SET ?',{departmentName: answer.dept, OverHeadCosts: answer.costs},function(err,results){
+				connection.query('INSERT INTO departments SET ?',{DepartmentName: answer.dept, OverHeadCosts: answer.costs},function(err,results){
 				if(err) throw err;
-				console.log('Added dept in the table.'); 
+				console.log('');
+				console.log('Added dept in the table.');
+				console.log('Rows affected :',results.affectedRows); 
 				connection.end();
 				
 			});

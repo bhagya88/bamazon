@@ -51,7 +51,7 @@ function processOrder(productID,quantity){
 		var quantityRemaining = availableQuantity - quantity;
 
 		// updates products table(stockQuantity column) and departments table(total Sales column)
-				connection.query('UPDATE products,departments SET products.stockQuantity = ? , departments.totalSales = departments.totalSales + ? WHERE products.itemID = ? AND products.departmentName = departments.departmentName',[quantityRemaining, price*quantity,productID],function(err){
+				connection.query('UPDATE products,departments SET products.StockQuantity = ? , departments.TotalSales = departments.TotalSales + ? WHERE products.ItemID = ? AND products.DepartmentName = departments.DepartmentName',[quantityRemaining, price*quantity,productID],function(err){
 				if(err) throw err;
 			
 				console.log('The total cost of purchase is $', price*quantity);
