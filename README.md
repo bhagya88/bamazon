@@ -9,7 +9,7 @@ The app will take in orders from customers and depletes stock from the store's i
 
 ### Demo
 
-The demo of how this app works is provided here, [click to find demo on github](https://github.com/bhagya88/bamazon/blob/master/BamazonDemo.mp4)
+The demo of how this app works is provided here, [click to find demo on github](https://github.com/bhagya88/bamazon/blob/master/demo)
 
 ### How it works
 
