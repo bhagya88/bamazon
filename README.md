@@ -1,26 +1,32 @@
-#Bmazon 
-Amazon like storefront where customers can purchase products. This app is bulit using Node Js, MySQL, Inquirer module, and console.table module. 
+#Bamazon 
 
 ### Overview
-
-The app will take in orders from customers and depletes stock from the store's inventory. It also tracks product sales across your store's departments and then provides a summary of the highest-grossing departments in the store. 
-
-
+Amazon like storefront where customers can purchase products. The app will take in orders from customers and depletes stock from the store's inventory. It also tracks product sales across the store's departments and then provides a summary of the highest-grossing departments in the store. 
 
 ### Demo
+[click to find demo on github](https://github.com/bhagya88/bamazon/blob/master/demo)
 
-The demo of how this app works is provided here, [click to find demo on github](https://github.com/bhagya88/bamazon/blob/master/demo)
+### Technologies used
+* Node.js
+* Inquirer module
+* Mysql module
+* console.table module
+* MYSQL - database
+
+### Challenges faced
+* How to put together all the asynchronous functions and make them work?
+
+### Solutions found
+* Understanding how promises work and how to use recursive functions helped solve the problem.
 
 ### How it works
-
 The app has  3 views. `Customer View`, `Manager view` and `Executive view`. 
 
 #### 1. Customer view - BamazonCustomer.js
 
+* Running this application will display all of the items available for sale. Include the ids, names, and prices of products for sale.
 
- * Running this application will display all of the items available for sale. Include the ids, names, and prices of products for sale.
-
- * Then app prompts users with two messages. 
+* Then app prompts users with two messages. 
 	* The first asks them the ID of the product they would like to buy. 
 	* The second message asks them how many units of the product they would like to buy.
 
@@ -30,8 +36,6 @@ The app has  3 views. `Customer View`, `Manager view` and `Executive view`.
 * However, if the store *does* have enough of the product, application fulfills the customer's order. 
 	* This means updating the SQL database to reflect the remaining quantity.
 	* Once the update goes through, it shows the customer the total cost of their purchase.
-
-
 
 #### 2. Manager View - BamazonManager.js
 
@@ -54,7 +58,6 @@ The app has  3 views. `Customer View`, `Manager view` and `Executive view`.
 
 
 #### 3. Executive View - BamazonExecutive.js
-
 
 * Running this application will list a set of menu options: 
 	* View Product Sales by Department 
